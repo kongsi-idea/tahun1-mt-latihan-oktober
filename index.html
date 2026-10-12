@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>一年级10月数学练习</title>
+  <meta name="description" content="一年级数学10月练习：分数、钱币、星期、时间、立体和图表，一题一题在线做。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+<script src="https://kongsi-idea.vercel.app/data/track-use.js" data-slug="tahun1-mt-latihan-oktober" defer></script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- 封面 -->
+    <section id="cover" class="screen is-active" aria-label="封面">
+      <div class="cover-board">
+        <div class="cover-label">
+          <p class="cover-kicker">一年级</p>
+          <h1>10月数学练习</h1>
+          <svg class="cover-pencil" viewBox="0 0 220 24" aria-hidden="true"><path d="M4 12h170l22-9v18l-22-9" fill="none" stroke="#4A4F57" stroke-width="2.4" stroke-linejoin="round"/><path d="M174 12l22-9" stroke="#E7B84A" stroke-width="2.4"/></svg>
+          <p class="cover-sub">分数 · 钱币 · 星期 · 时间 · 立体 · 图表</p>
+        </div>
+        <button class="btn primary big" id="btnStart">开始做题</button>
+        <p class="cover-note">一题一题做，做完再对答案。</p>
+      </div>
+    </section>
+
+    <!-- 选名字 -->
+    <section id="pick" class="screen" aria-label="选名字">
+      <div class="sheet">
+        <h2 class="pencil-title">点你的名字</h2>
+        <p class="sub" id="pickSub">正在读取班级名单…</p>
+        <div id="pickGrid" class="pick-grid"></div>
+        <div class="pick-actions">
+          <button class="btn ghost" id="btnManual" hidden>找不到我的名字？</button>
+          <button class="btn ghost" id="btnPickRetry" hidden>重新读取名单</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 做题 -->
+    <section id="quiz" class="screen" aria-label="做题">
+      <header class="q-top">
+        <div class="q-progress" role="progressbar" aria-valuemin="0" aria-valuemax="29" aria-valuenow="0" id="qProg"><i id="qProgFill"></i></div>
+        <div class="q-meta">
+          <span class="q-count" id="qCount">第 1 题 / 共 29 题</span>
+          <span class="q-who" id="qWho"></span>
+        </div>
+      </header>
+      <main class="q-body" id="qBody"></main>
+      <nav class="q-nav">
+        <button class="btn ghost nav-btn" id="btnPrev">上一题</button>
+        <button class="btn primary nav-btn" id="btnNext">下一题</button>
+      </nav>
+    </section>
+
+    <!-- 没送出去 -->
+    <section id="failed" class="screen" aria-label="没送出去">
+      <div class="sheet center">
+        <h2 class="pencil-title">没送出去</h2>
+        <p class="sub" id="failedMsg">网络好像不通，你的答案还在，别担心。</p>
+        <div class="stack">
+          <button class="btn primary big" id="btnRetrySend">没送出去，再试一次</button>
+          <button class="btn ghost" id="btnBackQuiz">回去看看题目</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 完成 -->
+    <section id="done" class="screen" aria-label="完成">
+      <div class="sheet">
+        <div class="score-wrap">
+          <svg class="score-circle" viewBox="0 0 220 120" aria-hidden="true"><path d="M110 8C58 6 12 28 14 62c2 36 52 54 100 50 56-4 96-30 90-62C198 22 156 4 100 10" fill="none" stroke="#D6382F" stroke-width="5" stroke-linecap="round"/></svg>
+          <p class="score" id="score"></p>
+        </div>
+        <p class="sub center" id="scoreMsg"></p>
+        <ul id="wrongList" class="wrong-list"></ul>
+        <div class="stack">
+          <button class="btn primary big" id="btnRedo" hidden>再试一次错的题</button>
+          <button class="btn ghost" id="btnDoneHome">回封面</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 手动输入名字 -->
+    <div class="overlay" id="manualOverlay" hidden>
+      <form class="dialog" id="manualForm" role="dialog" aria-labelledby="manualTitle">
+        <h2 id="manualTitle">写下你的名字</h2>
+        <input id="manualName" type="text" maxlength="20" autocomplete="off" placeholder="名字" aria-label="名字">
+        <div class="dialog-actions">
+          <button type="button" class="btn ghost" id="btnManualCancel">取消</button>
+          <button type="submit" class="btn primary">好了</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- 交卷确认 -->
+    <div class="overlay" id="confirmOverlay" hidden>
+      <div class="dialog" role="dialog" aria-labelledby="confirmTitle">
+        <h2 id="confirmTitle">要交卷了吗？</h2>
+        <p id="confirmMsg" class="sub"></p>
+        <div class="dialog-actions">
+          <button class="btn ghost" id="btnConfirmNo">再看看</button>
+          <button class="btn primary" id="btnConfirmYes">交卷</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://kongsi-idea.vercel.app/data/supabase-client.js"></script>
+  <script src="https://kongsi-idea.vercel.app/data/class-code-client.js"></script>
+  <script src="bank.js"></script>
+  <script src="audio/manifest.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

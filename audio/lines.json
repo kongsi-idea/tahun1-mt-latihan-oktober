@@ -1,0 +1,176 @@
+[
+ {
+  "id": "q1-1",
+  "text": "涂上颜色的部分，用文字写出来，是几分之几？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "9a792d62"
+ },
+ {
+  "id": "q1-2",
+  "text": "涂上颜色的部分，用文字写出来，是几分之几？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "9a792d62"
+ },
+ {
+  "id": "q2-1",
+  "text": "把图形涂上颜色，涂出四分之二。点一下格子涂色，再点一下就取消。",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "8758ad1e"
+ },
+ {
+  "id": "q3-1",
+  "text": "五十仙，加二十仙，等于多少仙？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "fe221066"
+ },
+ {
+  "id": "q3-2",
+  "text": "十令吉，加二令吉，等于多少令吉？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "5c3260bc"
+ },
+ {
+  "id": "q3-3",
+  "text": "九十仙，减三十仙，等于多少仙？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "3fda9f91"
+ },
+ {
+  "id": "q3-4",
+  "text": "两张五令吉的钞票，一共是多少令吉？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "5ca1c0e6"
+ },
+ {
+  "id": "q4-1",
+  "text": "这两枚硬币，合起来是多少钱？选一个。",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "82a36d7a"
+ },
+ {
+  "id": "q4-2",
+  "text": "这张钞票是多少钱？选一个。",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "4edda69c"
+ },
+ {
+  "id": "q4-3",
+  "text": "这张钞票是多少钱？选一个。",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "4edda69c"
+ },
+ {
+  "id": "q5-1",
+  "text": "一枚二十仙，可以换成几枚十仙？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "2c1e0108"
+ },
+ {
+  "id": "q5-2",
+  "text": "一张一令吉，可以换成几枚五十仙？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "66947545"
+ },
+ {
+  "id": "q6-1",
+  "text": "依序填写星期。星期日的后面，第一个空格是星期几？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "79f38915"
+ },
+ {
+  "id": "q6-2",
+  "text": "第二个空格是星期几？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "3304b391"
+ },
+ {
+  "id": "q7-1",
+  "text": "钟面上是几时？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "5e32fa53"
+ },
+ {
+  "id": "q7-2a",
+  "text": "箭头 a 指的是时针，还是分针？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "008b678d"
+ },
+ {
+  "id": "q7-2b",
+  "text": "箭头 b 指的是时针，还是分针？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "ad69679c"
+ },
+ {
+  "id": "q8a",
+  "text": "看图，这是什么时段？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "865637a5"
+ },
+ {
+  "id": "q8b",
+  "text": "看图，这是什么时段？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "865637a5"
+ },
+ {
+  "id": "q9-1",
+  "text": "丽丽有一个蛋糕，她吃了四分之二，弟弟吃了四分之一，还剩下几分之几的蛋糕？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "08830913"
+ },
+ {
+  "id": "q9-2",
+  "text": "把剩下的蛋糕涂上颜色。",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "dadd0a0e"
+ },
+ {
+  "id": "q10a",
+  "text": "妹妹一共有多少零用钱？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "e6cfe4e9"
+ },
+ {
+  "id": "q10b",
+  "text": "妹妹想买一个二令吉的文具，她还缺多少钱？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "a42d708b"
+ },
+ {
+  "id": "q11a",
+  "text": "这个立体叫什么名称？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "1d5de2b5"
+ },
+ {
+  "id": "q11b",
+  "text": "这个立体，有几个平面、几个曲面、几个顶点？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "75df82fa"
+ },
+ {
+  "id": "q12",
+  "text": "静静把七杯一样多的橙汁拿给客人喝，桌上还有两杯。静静一共准备了多少杯橙汁？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "93e24918"
+ },
+ {
+  "id": "q13a",
+  "text": "哪一班吃了六片三文治？每个三角形，代表两片。",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "c40edd4f"
+ },
+ {
+  "id": "q13b",
+  "text": "一年级 A 班到 D 班，一共吃了多少片三文治？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "1b9a52ee"
+ },
+ {
+  "id": "q13c",
+  "text": "哪一班吃的三文治最多？",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "key": "198277b5"
+ }
+]
