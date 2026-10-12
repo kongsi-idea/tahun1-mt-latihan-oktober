@@ -21,3 +21,11 @@
 `python3 -m http.server 8791 --bind 127.0.0.1`，然后：
 - `node test-bank.cjs`（bank.js 单元测试；上层 package.json 是 type:module，所以用 `.cjs`＋vm 载入）
 - `python3 test-e2e.py`（Supabase 全拦截，假名单 `?code=TEST-1I`，不写真库；截图到 `~/Documents/my-agent/playwright-to-delete/`）
+
+## 老师后台与数据库（B 块，代码在 `kongsi-idea/`）
+- **后台放 Hub（`latihan-admin.html`），不放工具域名**：老师登录是 Google OAuth，回跳网址白名单里只有 Hub；放工具域名要改 Supabase 设定。页面 `noindex`、Hub 首页不放入口，老师自己存书签。
+- **表 `tahun1_mt_latihan_okt_answers`**（migration `kongsi-idea/supabase/migration-2026-10-12-...sql`，2026-10-12 已在线上执行，5 条权限已实测）：anon 只能 insert（source 必须 online、班级代码必须存在、answer<2000 字节）；只有 `is_class_teacher` 的老师能读写。分析一律取每人每题最早一笔 attempt 1。
+- **刻意不做**：打印页／二维码（老师直接打印原 PDF）、草稿纸作答、访客模式、排行榜（诊断练习不让学生互比）、原子化纸本回填（目前先删后写，失败可重试；要改需新增 RPC）。
+- **Hub 条目 `standards` 暂空**：只核对过 7.1.1 立体名称，其余 DSKP 代码未核，不编。Hub `url` 不带班级代码；给学生的链接要手动加 `?code=JBC1037-1I`。
+- **班级代码**：老师写的 `JBC1037-1X` 按 Hub 实际存在的 `JBC1037-1I` 处理（推断，未向老师确认）。
+- **关口②被老师跳过**（2026-10-12「先直接发布」）：手机／平板真机从未实测，上线后才请老师点。
