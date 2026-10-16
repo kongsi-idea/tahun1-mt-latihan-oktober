@@ -9,7 +9,7 @@
 - **`bank.js` 是唯一的对错来源**：学生端、老师后台、纸本回填都用 `LatihanBank.grade(id, answer)`。合约（id、答案格式、`entry.kind`）不可单方面改，改了要通知 B。`vercel.json` 给 `/bank.js` 加了 `Access-Control-Allow-Origin: *`（Hub 从 `https://tahun1-mt-latihan-oktober.vercel.app/bank.js` 载入）。
 - **共 29 个小项**（不是 PLAN 里写的 31）：题号表实际 29 行；q11b 是一个 multi 项（平面／曲面／顶点三个小框，一行）。
 - **立体名称用 DSKP 用词「圆柱体」**（DSKP KSSR 2017 数学一年级 SJKC 7.1.1：长方体、正方体、圆锥体、正方棱锥体、圆柱体、球体），不是 PLAN 里的「圆柱」。
-- **没作答的题不写入**（与纸本回填「全部留空不写」一致）；交卷前会提醒还有几题没做。
+- **没作答的题不写入**（与纸本回填「全部留空不写」一致）；**必须全部答完才能交卷**（2026-10-16 老师定；没答完只给「去做没做的题」）。
 - **只 insert，不 select／upsert**；失败时 rows 存在 `localStorage`（`latihan-okt:{play_code}:{名字}`），刷新后仍停在「没送出去，再试一次」。
 - **再试一次错的题** → `attempt_no` 递增，只含错题，不覆盖第一次。分析以 attempt 1 为准（老师后台处理）。
 - **手动输入名字**：`in_roster=false`（输入的名字恰好在名单里则算 true）；`play_code` 取名单第一个班（Hub 链接只带一个班代码）。没有访客模式：没读到名单就不能做题。

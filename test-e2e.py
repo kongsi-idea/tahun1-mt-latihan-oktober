@@ -160,11 +160,10 @@ with sync_playwright() as p:
     answer(page, 'q1-1', '四分之三'); page.click('#btnNext'); answer(page, 'q1-2', '四分之一')
     for _ in range(27): page.click('#btnNext')
     check('一路下一题到最后一题', cur(page) == 'q13c')
-    page.click('#btnNext'); check('没做完交卷会提醒还有几题', '还有 27 题' in page.inner_text('#confirmMsg'), page.inner_text('#confirmMsg'))
-    page.click('#btnConfirmYes'); page.wait_for_selector('#done.is-active')
-    r = posts[0]
-    check('手动名字 in_roster=false 且仍带 play_code', len(r) == 2 and all(x['in_roster'] is False and x['student_name'] == '新同学小丽' and x['play_code'] == 'TEST-1I' for x in r), str(r[0]))
-    check('没作答的题不写入', [x['item_id'] for x in r] == ['q1-1', 'q1-2'])
+    page.click('#btnNext'); check('没做完不能交卷，只能回去做', '还有 27 题' in page.inner_text('#confirmMsg') and page.is_hidden('#btnConfirmYes'), page.inner_text('#confirmMsg'))
+    page.click('#btnConfirmNo'); page.wait_for_timeout(200)
+    check('点「去做没做的题」跳到第一个没做的题', cur(page) == 'q2-1', cur(page))
+    check('没做完时没有送出任何答案', len(posts) == 0, str(len(posts)))
     ctx.close()
 
     # ───── 4. 刷新恢复 ─────

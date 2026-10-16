@@ -390,9 +390,17 @@ function go(d) {
   S.idx = j; save(); renderItem();
 }
 function askSubmit() {
-  const missing = S.ids.filter(id => !isAnswered(id)).length;
-  if (missing === S.ids.length) { $('#confirmMsg').textContent = '还一题都没做，先做几题再交卷吧。'; $('#btnConfirmYes').hidden = true; }
-  else { $('#confirmMsg').textContent = missing ? `还有 ${missing} 题没做，现在交卷，没做的就不算了。` : '全部做完了！交卷后就能看到对了几题。'; $('#btnConfirmYes').hidden = false; }
+  const miss = S.ids.filter(id => !isAnswered(id));
+  const no = $('#btnConfirmNo');
+  S.jumpTo = null;
+  if (miss.length) {   // 老师 2026-10-16：一定要全部答完才能交卷
+    S.jumpTo = S.ids.indexOf(miss[0]);
+    $('#confirmMsg').textContent = miss.length === S.ids.length ? '还一题都没做，先做完再交卷吧。' : `还有 ${miss.length} 题没做。要全部做完才能交卷，去做没做的题吧。`;
+    $('#btnConfirmYes').hidden = true; no.textContent = '去做没做的题';
+  } else {
+    $('#confirmMsg').textContent = '全部做完了！交卷后就能看到对了几题。';
+    $('#btnConfirmYes').hidden = false; no.textContent = '再看看';
+  }
   $('#confirmOverlay').hidden = false;
 }
 function buildRows() {
@@ -458,8 +466,8 @@ $('#manualForm').onsubmit = e => {
 };
 $('#btnPrev').onclick = () => go(-1);
 $('#btnNext').onclick = () => go(1);
-$('#btnConfirmNo').onclick = () => { $('#confirmOverlay').hidden = true; };
-$('#btnConfirmYes').onclick = () => { const rows = buildRows(); if (rows.length) submit(rows); };
+$('#btnConfirmNo').onclick = () => { $('#confirmOverlay').hidden = true; if (S.jumpTo != null && S.jumpTo >= 0) { S.idx = S.jumpTo; S.jumpTo = null; save(); renderItem(); } };
+$('#btnConfirmYes').onclick = () => { if (S.ids.some(id => !isAnswered(id))) { askSubmit(); return; } const rows = buildRows(); if (rows.length) submit(rows); };
 $('#btnRetrySend').onclick = () => { if (S.pending) submit(S.pending); };
 $('#btnBackQuiz').onclick = () => { S.phase = 'quiz'; S.idx = Math.max(0, S.ids.length - 1); S.pending = null; startQuiz(); };
 $('#btnRedo').onclick = redoWrong;
