@@ -3,7 +3,7 @@
 > 设计决定在 `agents.md`，规划与合约在 `PLAN.md`。本档只记现在停在哪。
 
 ## ⏯️ 目前做到哪
-2026-10-12：v1.0 已上线并上架 Hub。学生端 https://tahun1-mt-latihan-oktober.vercel.app ；老师后台 https://kongsi-idea.vercel.app/latihan-admin.html（Google 登录）。migration 已执行、RLS 5 条实测通过、`npm run check` 全过、线上 e2e 全过（Supabase 拦截）。
+2026-10-12：v1.0 已上线并上架 Hub。学生端 https://tahun1-mt-latihan-oktober.vercel.app ；老师后台 https://kongsi-idea.vercel.app/teacher.html?tool=tahun1-mt-latihan-oktober（10-17 起；旧 latihan-admin.html 已转址）（Google 登录）。migration 已执行、RLS 5 条实测通过、`npm run check` 全过、线上 e2e 全过（Supabase 拦截）。
 
 ## 🚦 目前状态
 - 可用。给学生的链接：`…vercel.app/?code=JBC1037-1I`。

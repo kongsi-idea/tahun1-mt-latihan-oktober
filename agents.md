@@ -3,7 +3,7 @@
 > 完整规划与合约在 `PLAN.md`（老师 2026-10-12 关口①已批准）。现在停在哪 → `handoff.md`。本档只放代码看不出来的决定。
 
 ## 这是什么
-学生在线一题一题做（手机／平板／电脑）→ 交卷一次写入 Supabase → 老师在 Hub 的后台（`kongsi-idea/latihan-admin.html`，B 块）看每题对错与错误类型。**学生端读不到任何人的答案**（anon 只有 insert，没有 select）。纸本由老师打印原 PDF，工具不做打印页。
+学生在线一题一题做（手机／平板／电脑）→ 交卷一次写入 Supabase → 老师在 Hub 的后台（Hub 通用后台 `teacher.html?tool=tahun1-mt-latihan-oktober`，设定 `kongsi-idea/data/teacher/tahun1-mt-latihan-oktober.js`；10-17 前是 `latihan-admin.html`，已转址，B 块）看每题对错与错误类型。**学生端读不到任何人的答案**（anon 只有 insert，没有 select）。纸本由老师打印原 PDF，工具不做打印页。
 
 ## 关键决定
 - **`bank.js` 是唯一的对错来源**：学生端、老师后台、纸本回填都用 `LatihanBank.grade(id, answer)`。合约（id、答案格式、`entry.kind`）不可单方面改，改了要通知 B。`vercel.json` 给 `/bank.js` 加了 `Access-Control-Allow-Origin: *`（Hub 从 `https://tahun1-mt-latihan-oktober.vercel.app/bank.js` 载入）。
@@ -23,7 +23,7 @@
 - `python3 test-e2e.py`（Supabase 全拦截，假名单 `?code=TEST-1I`，不写真库；截图到 `~/Documents/my-agent/playwright-to-delete/`）
 
 ## 老师后台与数据库（B 块，代码在 `kongsi-idea/`）
-- **后台放 Hub（`latihan-admin.html`），不放工具域名**：老师登录是 Google OAuth，回跳网址白名单里只有 Hub；放工具域名要改 Supabase 设定。页面 `noindex`、Hub 首页不放入口，老师自己存书签。
+- **后台放 Hub（10-17 起为通用后台 `teacher.html?tool=…`，原 `latihan-admin.html`），不放工具域名**：老师登录是 Google OAuth，回跳网址白名单里只有 Hub；放工具域名要改 Supabase 设定。页面 `noindex`、Hub 首页不放入口，老师自己存书签。
 - **表 `tahun1_mt_latihan_okt_answers`**（migration `kongsi-idea/supabase/migration-2026-10-12-...sql`，2026-10-12 已在线上执行，5 条权限已实测）：anon 只能 insert（source 必须 online、班级代码必须存在、answer<2000 字节）；只有 `is_class_teacher` 的老师能读写。分析一律取每人每题最早一笔 attempt 1。
 - **刻意不做**：打印页／二维码（老师直接打印原 PDF）、草稿纸作答、访客模式、排行榜（诊断练习不让学生互比）、原子化纸本回填（目前先删后写，失败可重试；要改需新增 RPC）。
 - **Hub 条目 `standards` 暂空**：只核对过 7.1.1 立体名称，其余 DSKP 代码未核，不编。Hub `url` 不带班级代码；给学生的链接要手动加 `?code=JBC1037-1I`。
